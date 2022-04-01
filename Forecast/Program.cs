@@ -55,11 +55,14 @@ app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
 
 app.Run();
 
+
+
 class Todo
 {
     public int Id { get; set; }
     public string? Name { get; set; }
     public bool IsComplete { get; set; }
+    public string? Secret { get; set; }
 }
 
 class TodoDb : DbContext
