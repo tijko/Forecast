@@ -12,6 +12,8 @@ COPY . .
 WORKDIR "/src/Forecast"
 RUN dotnet build "Forecast.csproj" -c Release -o /app/build
 
+#RUN dotnet test "....UnitTests.csproj" --logger "trx;LogFileName=...trx" 
+
 FROM build AS publish
 RUN dotnet publish "Forecast.csproj" -c Release -o /app/publish
 
