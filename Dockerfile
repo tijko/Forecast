@@ -6,7 +6,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim-amd64 AS build
 WORKDIR /src
-COPY ["Forecast.csproj", "Forecast/"]
+COPY ["Forecast/Forecast.csproj", "Forecast/"]
 #COPY ["../ForecastXUnitTest/ForecastXUnitTest.csproj", "ForecastTest/"]
 WORKDIR "/src/Forecast"
 RUN dotnet restore "Forecast.csproj"
