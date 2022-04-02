@@ -6,10 +6,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 #WORKDIR /src
-COPY ["Forecast/Forecast.csproj", "Forecast/"]
-COPY ["ForecastXUnitTest/ForecastXUnitTest.csproj", "ForecastTest/"]
-RUN dotnet restore "Forecast/Forecast.csproj"
-RUN dotnet restore "ForecastTest/ForecastXUnitTest.csproj"
+COPY ["Forecast.csproj", "Forecast/"]
+COPY ["../ForecastXUnitTest/ForecastXUnitTest.csproj", "ForecastTest/"]
+RUN dotnet restore "Forecast.csproj"
+RUN dotnet restore "../ForecastTest/ForecastXUnitTest.csproj"
 COPY . .
 WORKDIR "/src/Forecast"
 RUN dotnet build "Forecast.csproj" -c Release -o /app/build
