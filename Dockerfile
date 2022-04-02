@@ -11,7 +11,7 @@ COPY ["Forecast/Forecast.csproj", "Forecast/"]
 WORKDIR "/src/Forecast"
 RUN dotnet restore "Forecast.csproj"
 #RUN dotnet restore "../ForecastTest/ForecastXUnitTest.csproj"
-COPY . .
+COPY Forecast/ .
 #WORKDIR "/src/Forecast"
 RUN dotnet build "Forecast.csproj" -c Release -o /app/build
 #WORKDIR "/src/ForecastTest"
