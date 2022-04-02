@@ -17,14 +17,14 @@ RUN dotnet publish "Forecast.csproj" -c Release -o /app/publish
 
 WORKDIR /
 RUN rm -rf /src
-#COPY ["../ForecastXUnitTest/ForecastXUnitTest.csproj", "ForecastTest/"]
-#RUN dotnet restore "../ForecastTest/ForecastXUnitTest.csproj"
-#WORKDIR "/src/Forecast"
-#WORKDIR "/src/ForecastTest"
-#RUN dotnet build "ForecastXUnitTest.csproj" -c Release -o /app
-#RUN dotnet test "ForecastXUnitTest.csproj"
 
-
+WORKDIR /src
+COPY ["ForecastXUnitTest/ForecastXUnitTest.csproj", "ForecastXUnitTest/"]
+WORKDIR "/src/ForecastXUnitTest"
+RUN dotnet restore "ForecastXUnitTest.csproj"
+COPY ForecastXUnitTest/ .
+RUN dotnet build "ForecastXUnitTest.csproj" -c Release -o /app
+RUN dotnet test "ForecastXUnitTest.csproj"
 
 FROM base AS final
 WORKDIR /app
