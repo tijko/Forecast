@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  forecast:
+    image: ${DOCKER_REGISTRY-}forecast
+    build:
+      context: .
+      dockerfile: Forecast/Dockerfile
