@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
+#WORKDIR /src
 COPY ["Forecast/Forecast.csproj", "Forecast/"]
 COPY ["ForecastXUnitTest/ForecastXUnitTest.csproj", "ForecastTest/"]
 RUN dotnet restore "Forecast/Forecast.csproj"
