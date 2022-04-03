@@ -24,7 +24,7 @@ WORKDIR "/src/ForecastXUnitTest"
 RUN dotnet restore "ForecastXUnitTest.csproj"
 COPY ForecastXUnitTest/ .
 RUN dotnet build "ForecastXUnitTest.csproj" -c Release -o /app
-RUN dotnet test "ForecastXUnitTest.csproj"
+RUN dotnet test -c Release --results-directory /testresults --logger "trx;LogFileName=test_results.trx" "ForecastXUnitTest.csproj"
 
 FROM base AS final
 WORKDIR /app
