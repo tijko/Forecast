@@ -19,6 +19,7 @@ WORKDIR /
 RUN rm -rf /src
 
 WORKDIR /src
+LABEL test=true
 COPY ["ForecastXUnitTest/ForecastXUnitTest.csproj", "ForecastXUnitTest/"]
 WORKDIR "/src/ForecastXUnitTest"
 RUN dotnet restore "ForecastXUnitTest.csproj"
