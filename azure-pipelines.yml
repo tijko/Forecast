@@ -28,3 +28,17 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+
+    - task: PowerShell@2
+      displayName: 'Copy test results'
+      inputs:
+        targetType: 'filePath'
+        filePath: '$(Build.SourcesDirectory)/scripts/docker-results.ps1'
+
+    - task: PublishTestResults@2
+      displayName: 'Publish test results'
+      inputs:
+        testResultsFormat: 'VSTest'
+        testResultsFiles: '**/*.trx'
+        searchFolder: '$(System.DefaultWorkingDirectory)/testresults'
+      
